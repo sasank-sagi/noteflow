@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition, useRef } from "react";
+import { createPortal } from "react-dom";
 import { Plus, Pencil, X, Loader2 } from "lucide-react";
 import { createNoteAction, updateNoteAction } from "@/app/actions";
 import type { Note } from "@/lib/db";
@@ -67,7 +68,7 @@ export default function NoteForm({ initialNote }: { initialNote?: Note }) {
         </button>
       )}
 
-      {open && (
+      {open && createPortal(
         <div
           className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
           onClick={(e) => { if (e.target === e.currentTarget) setOpen(false); }}
@@ -171,7 +172,8 @@ export default function NoteForm({ initialNote }: { initialNote?: Note }) {
               </div>
             </form>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
