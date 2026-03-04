@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# SQLite database files
+noteflow.db
+noteflow.db-shm
+noteflow.db-wal
